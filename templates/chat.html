@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <style>
+        #chat-box { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div id="chat-box"></div>
+    <input type="text" id="message-input" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const socket = io.connect('http://localhost:5000');
+        const senderId = 1;  // Replace with logged-in user's ID
+        const receiverId = 2;  // Replace with the tutor's/student's ID
+
+        socket.on('connect', () => {
+            console.log('Connected to server');
+        });
+
+        socket.on('receive_message', (data) => {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<p><strong>User ${data.sender_id}:</strong> ${data.content} (${data.timestamp})</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const content = input.value;
+            if (content) {
+                socket.emit('send_message', {
+                    sender_id: senderId,
+                    receiver_id: receiverId,
+                    content: content
+                });
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html> 

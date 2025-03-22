@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Tutor{% endblock %}
+
+{% block content %}
+    <h1>Add Tutor</h1>
+    <form method="POST" action="{{ url_for('add_tutor') }}">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="module_ids">Assign Modules:</label><br>
+        {% for module in modules %}
+            <input type="checkbox" id="module_{{ module.module_id }}" name="module_ids" value="{{ module.module_id }}">
+            <label for="module_{{ module.module_id }}">{{ module.module_name }}</label><br>
+        {% endfor %}
+        <br>
+
+        <label for="availability_count">Number of Availability Slots:</label><br>
+        <input type="number" id="availability_count" name="availability_count" min="1" required><br><br>
+
+        <div id="availability_slots"></div>
+
+        <input type="submit" value="Add Tutor">
+    </form>
+
+    <script>
+        // JavaScript to dynamically add availability slots based on the number entered
+        document.getElementById('availability_count').addEventListener('input', function () {
+            const count = parseInt(this.value);
+            const container = document.getElementById('availability_slots');
+            container.innerHTML = '';
+
+            for (let i = 0; i < count; i++) {
+                container.innerHTML += `
+                    <h3>Availability Slot ${i + 1}</h3>
+                    <label for="day_of_week_${i}">Day of Week:</label><br>
+                    <select id="day_of_week_${i}" name="day_of_week_${i}" required>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select><br><br>
+
+                    <label for="start_time_${i}">Start Time:</label><br>
+                    <input type="time" id="start_time_${i}" name="start_time_${i}" required><br><br>
+
+                    <label for="end_time_${i}">End Time:</label><br>
+                    <input type="time" id="end_time_${i}" name="end_time_${i}" required><br><br>
+
+                    <label for="module_id_${i}">Module:</label><br>
+                    <select id="module_id_${i}" name="module_id_${i}" required>
+                        {% for module in modules %}
+                            <option value="{{ module.module_id }}">{{ module.module_name }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                `;
+            }
+        });
+    </script>
+{% endblock %}
