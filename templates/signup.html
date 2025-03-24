@@ -10,7 +10,6 @@
 
         <p>Join Tute Me today and unlock a world of personalized learning! Whether you're a student looking for academic support or a tutor ready to share your knowledge, our platform makes it easy to connect, learn, and grow.</p>
 
-        <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -46,12 +45,6 @@
                 <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
             </div>
 
-            <div class="form-group">
-                <select id="role" name="role" required>
-                    <option class="opt" value="student">Student</option>
-                    <option class="opt" value="tutor">Tutor</option>
-                </select>
-            </div>
 
             <button type="submit" class="btn">Sign Up</button>
         </form>

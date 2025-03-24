@@ -6,18 +6,6 @@
 {% block content %}
 
 <div class="users">
-    <div class="title">
-        <div class="form">
-            <h2>These are your users</h2>
-    
-            <form method="GET" action="{{ url_for('view_all_users') }}" class="search-form">
-                <div class="form-group">
-                    <input type="text" name="search" placeholder="Search user" value="{{ request.args.get('search', '') }}">
-                    <button type="submit" class="btn">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
     <div class="content">
         <div class="header">
             <div class="logo">

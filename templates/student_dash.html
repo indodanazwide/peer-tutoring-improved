@@ -10,24 +10,5 @@
             Here are the modules we offer. You can book a tutor based on the module you want.
         </p>
     </div>
-    <div class="content">
-        <h3>Your Booked Sessions</h3>
-        {% if booked_sessions %}
-            <ul>
-                {% for session in booked_sessions %}
-                    <li>
-                        <p>
-                            <strong>{{ session.module_name }}</strong> ({{ session.module_code }})<br>
-                            Tutor: {{ session.tutor_name }} {{ session.tutor_surname }}<br>
-                            Date: {{ session.booking_date }}<br>
-                            Time: {{ session.start_time }} - {{ session.end_time }} ({{ session.day_of_week }})
-                        </p>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>You have no booked sessions.</p>
-        {% endif %}
-    </div>
 </div>
 {% endblock %}
