@@ -1,0 +1,50 @@
+<!-- templates/view_all_users.html -->
+{% extends 'base.html' %}
+
+{% block title %}View All Users{% endblock %}
+
+{% block content %}
+
+<div class="users">
+    <div class="content">
+        <div class="header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/tute.png') }}" alt="Tute Me" width="30">
+                <h3>Tutors</h3>
+            </div>
+            <form method="GET" action="{{ url_for('view_all_users') }}" class="search-form">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Search by name, username, or email" value="{{ request.args.get('search', '') }}">
+                    <button type="submit" class="btn">Search</button>
+                </div>
+            </form>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not users %}
+                    <tr>
+                        <td colspan="4">No users found.</td>
+                    </tr>
+                {% else %}
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.name }} {{ user.surname }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

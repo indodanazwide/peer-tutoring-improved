@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}View Tutor{% endblock %}
+
+{% block content %}
+<div class="view-tutor">
+    <div class="title">
+        <h1>{{ tutor.name }} {{ tutor.surname }}</h1>
+
+        <div class="details">
+            <div>
+                <h2>{{ tutor.username }} is assigned these modules</h2>
+                <ul>
+                    {% if not modules %}
+                        <li>No modules assigned.</li>
+                    {% else %}
+                        {% for module in modules %}
+                            <li>{{ module.module_name }} ({{ module.module_code }})</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="tutor-info">
+                <p><strong>Username:</strong> {{ tutor.username }}</p>
+                <p><strong>Email:</strong> {{ tutor.email }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Availability</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Module</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for slot in availability %}
+                    <tr>
+                        <td>{{ slot.day_of_week }}</td>
+                        <td>{{ slot.start_time }}</td>
+                        <td>{{ slot.end_time }}</td>
+                        <td>{{ slot.module.module_name }} ({{ slot.module.module_code }})</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,200 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../static/images/tute.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/student.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/tutor.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+<body>
+    <div id="loader" class="loader">
+        <div class="circle-container">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+    </div>
+
+    {% if session.get('user_id') %}
+        <aside class="sidebar">
+            <section class="nav">
+                <article class="header">
+                    <a href="#" class="logo">
+                        <img src="../static/images/tute.png" alt="Tute Me" width="30">
+                    </a>
+                    <h3>Tute Me!</h3>
+                </article>
+
+                <article class="nav-links">
+                    {% if session.get('role') == 'student' %}
+                        <a href="{{ url_for('student_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('view_bookings') }}" class="nav-link">
+                            <span>My Bookings</span>
+                        </a>
+                        <a href="{{ url_for('search_modules') }}" class="nav-link">
+                            <span>Search Modules</span>
+                        </a>
+
+                    {% elif session.get('role') == 'tutor' %}
+                        <a href="{{ url_for('tutor_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('view_tutor_bookings') }}" class="nav-link">
+                            <span>My Bookings</span>
+                        </a>
+                        
+                    {% elif session.get('role') == 'admin' %}
+                        <a href="{{ url_for('admin_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('view_all_users') }}" class="nav-link">
+                            <span>Users</span>
+                        </a>
+
+                    {% endif %}
+                </article>
+
+                <article class="footer">
+                    <a href="{{ url_for('logout') }}" class="nav-link logout">
+                        <span>Logout</span>
+                        <svg class="logout-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
+                        </svg>
+                    </a>
+                </article>
+            </section>
+        </aside>
+
+    {% else %}
+        <header>
+            <nav>
+                <img src="../static/images/tute.png" alt="Tute Me" width="30">
+            
+                <ul>
+                    <li><a href="{{ url_for('home') }}?scrollTo=hero" class="scroll-link">Home</a></li>
+                    <li><a href="{{ url_for('home') }}?scrollTo=about" class="scroll-link">About</a></li>
+                    <li><a href="{{ url_for('home') }}?scrollTo=contact" class="scroll-link">Contact</a></li>
+                    <li><a href="{{ url_for('home') }}?scrollTo=services" class="scroll-link">Services</a></li>
+                </ul>
+
+                <a href="{{ url_for('login') }}" class="btn">
+                    <span>Login</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </nav>
+        </header>
+    {% endif %}
+
+    <main>
+        <section class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    {% if not session.get('user_id') %}
+        <footer>
+            <section class="contact">
+                <article class="header">
+                    <div>
+                        <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/tute.png" alt="Tute Me" width="30"></a>
+                        <h3>Tute Me</h3>
+                    </div>
+                    <p>Connecting students with qualified peer tutors to foster academic excellence and collaborative learning.</p>
+                </article>
+                <article class="links">
+                    <a href="#" aria-label="Facebook" class="btn"><span>f</span></a>
+                    <a href="#" aria-label="Twitter" class="btn"><span>t</span></a>
+                    <a href="#" aria-label="Instagram" class="btn"><span>i</span></a>
+                    <a href="#" aria-label="LinkedIn" class="btn"><span>in</span></a>
+                </article>
+            </section>
+
+            <section class="about">
+                <h3>Learn. Connect. Succeed.</h3>
+                <p>
+                    TuteMe is a peer tutoring platform that connects students with qualified tutors for one-on-one and group study sessions. 
+                    
+                    <br />
+                    <br />
+                    
+                    It offers features like tutor discovery, session booking, educational resources, and progress tracking to enhance learning. 
+                    
+                    <br />
+                    <br />
+                    
+                    The platform streamlines tutoring with secure payments, in-app messaging, and personalized learning plans.
+                </p>
+            </section>
+
+            <hr>
+
+            <p class="copyright">&copy; 2025 Peer Tutoring. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a></p>
+        </footer>
+    {% endif %}
+
+    <script>
+        function showLoader() {
+            document.getElementById('loader').style.display = 'flex'
+        }
+
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none'
+        }
+
+        showLoader()
+        setTimeout(hideLoader, 2000)
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search)
+            const scrollToSection = params.get("scrollTo")
+
+            if (scrollToSection) {
+                const targetElement = document.getElementById(scrollToSection)
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50,
+                            behavior: "smooth"
+                        })
+                    }, 100)
+                }
+            }
+
+            document.querySelectorAll('.scroll-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault()
+                    const sectionID = this.getAttribute('href').split("=")[1]
+                    const targetElement = document.getElementById(sectionID)
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50,
+                            behavior: "smooth"
+                        })
+                    } else {
+                        window.location.href = "{{ url_for('home') }}?scrollTo=" + sectionID
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

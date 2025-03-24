@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Book a Session - {{ module.module_name }}{% endblock %}
+
+{% block content %}
+
+<div class="dashboard book-session">
+    <div class="title"><h1>Book a Session for {{ module.module_name }} ({{ module.module_code }})</h1></div>
+    <div class="content">
+            <div class="form">
+                <form method="GET" action="{{ url_for('book_session', module_id=module.module_id) }}">
+                    <label for="tutor_id">Select a Tutor:</label>
+                    <div class="form-group">
+                        <select name="tutor_id" onchange="this.form.submit()">
+                            <option value="">-- Select a Tutor --</option>
+                            {% for tutor in tutors %}
+                                <option value="{{ tutor.user_id }}" {% if selected_tutor_id == tutor.user_id %}selected{% endif %}>
+                                    {{ tutor.name }} {{tutor.surname}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+        {% if selected_tutor_id and availability_slots %}
+            <h2>Available Slots</h2>
+            <div class="form">
+                <form method="POST" action="{{ url_for('book_session', module_id=module.module_id) }}">
+                    <div class="form-group">
+                        <input type="hidden" name="tutor_id" value="{{ selected_tutor_id }}">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <th style="padding: 8px;">Day of Week</th>
+                                <th style="padding: 8px;">Start Time</th>
+                                <th style="padding: 8px;">End Time</th>
+                                <th style="padding: 8px;">Book</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for slot in availability_slots %}
+                                <tr style="border-bottom: 1px solid #ddd;">
+                                    <td style="padding: 8px;">{{ slot.day_of_week }}</td>
+                                    <td style="padding: 8px;">{{ slot.start_time }}</td>
+                                    <td style="padding: 8px;">{{ slot.end_time }}</td>
+                                    <td style="padding: 8px;">
+                                        <input type="radio" name="availability_id" value="{{ slot.availability_id }}" required>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="form-group">
+                        <label for="booking_date">Select Date:</label>
+                        <input type="date" id="booking_date" name="booking_date" min="{{ today }}" required>
+                    </div>
+                    <br><br>
+                    <button type="submit" value="Book session" class="btn">Book session</button>
+                </form>
+            </div>
+        {% elif selected_tutor_id %}
+            <p>No availability slots found for this tutor.</p>
+        {% endif %}
+    </div>
+</div>
+    <h1>Book a Session for {{ module.module_name }} ({{ module.module_code }})</h1>
+
+    
+    <br>
+    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+{% endblock %}

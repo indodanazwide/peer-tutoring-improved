@@ -1,0 +1,22 @@
+<!-- templates/edit_booking.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Booking{% endblock %}
+
+{% block content %}
+<div class="edit-booking">
+    <div class="title">
+        <h1>Edit Booking</h1>
+    </div>
+    <div class="content">
+        <div class="form">
+            <form method="POST">
+                <label for="booking_date">Booking Date (YYYY-MM-DD):</label>
+                <input type="date" id="booking_date" name="booking_date" value="{{ booking.booking_date }}" required>
+
+                <button type="submit" value="Save Changes" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

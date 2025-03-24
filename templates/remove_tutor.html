@@ -1,0 +1,21 @@
+<!-- templates/remove_tutor.html -->
+{% extends 'base.html' %}
+
+{% block title %}Remove Tutor{% endblock %}
+
+{% block content %}
+
+<div class="remove-tutor">
+    <div class="title">
+        <h1>Remove Tutor: {{ tutor.name }} {{ tutor.surname }}</h1>
+        <p>Are you sure you want to remove this tutor? This action cannot be undone.</p>
+    </div>
+
+    <div class="content">
+        <form method="POST" action="{{ url_for('remove_tutor', tutor_id=tutor.user_id) }}">
+            <button type="submit" class="btn delete">Yes, Remove Tutor</button>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn cancel">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

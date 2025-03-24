@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard student-dashboard">
+    <div class="title">
+        <h1>Hi {{ session.username }}. Hope you are doing good today?</h1>
+        <p>
+            Here are the modules we offer. You can book a tutor based on the module you want.
+        </p>
+    </div>
+</div>
+{% endblock %}

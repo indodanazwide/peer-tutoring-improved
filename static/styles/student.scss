@@ -1,0 +1,71 @@
+@use 'index' as *;
+
+.view-bookings,
+.search,
+.book-session {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    input,
+    select,
+    label {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid $soft-blue;
+        border-radius: 0.5rem;
+        font-size: 0.95em;
+        color:$dark-blue;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: $dark-blue;
+            outline: none;
+        }
+    }
+
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-block: 6rem;
+    }
+
+    .content {
+        .header,
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            gap: 1rem;
+        }
+
+        input,
+        select,
+        label {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $soft-blue;
+            border-radius: 0.5rem;
+            font-size: 0.95em;
+            color:$dark-blue;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: $dark-blue;
+                outline: none;
+            }
+        }
+    }
+}

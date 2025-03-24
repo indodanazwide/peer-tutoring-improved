@@ -1,0 +1,166 @@
+@use 'index' as *;
+
+.dashboard,
+.users,
+.add-tutor,
+.view-tutor,
+.edit-tutor,
+.remove-tutor {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-block: 6rem;
+    }
+
+    .content {
+        .header,
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            gap: 1rem;
+        }
+    }
+}
+
+.users {
+    .content {
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .form-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $soft-blue;
+            border-radius: 0.5rem;
+            font-size: 0.95em;
+            color:$dark-blue;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: $dark-blue;
+                outline: none;
+            }
+        }
+
+        .btn {
+            width: 100%;
+            padding: .75rem 2rem;
+        }
+    }
+}
+
+.add-tutor,
+.edit-tutor {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+    
+            input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid $soft-blue;
+                border-radius: 0.5rem;
+                font-size: 0.95em;
+                color:$dark-blue;
+                transition: border-color 0.3s ease;
+    
+                &:focus {
+                    border-color: $dark-blue;
+                    outline: none;
+                }
+            }
+    
+            .btn {
+                width: 100%;
+                padding: .75rem 2rem;
+            }
+        }
+
+        .group-module {
+            flex-direction: column;
+            
+            label,
+            select,
+            option {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                input {
+                    max-width: 1rem;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        form {
+            width: 100%;
+            padding: 0 4rem;
+
+            .cards {
+                margin-bottom: 1.5rem;
+            }
+
+            .slot {
+                padding: 0 4rem;
+            }
+
+            .btn {
+                width: 100%;
+                padding: .75rem 2rem;
+            }
+
+            select,
+            option,
+            input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid $soft-blue;
+                border-radius: 0.5rem;
+                font-size: 0.95em;
+                color:$dark-blue;
+                transition: border-color 0.3s ease;
+    
+                &:focus {
+                    border-color: $dark-blue;
+                    outline: none;
+                }
+            }
+        }
+    }
+}

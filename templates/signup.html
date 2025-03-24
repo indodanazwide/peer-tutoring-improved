@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<section class="signup">
+    <article class="form">
+        <h2>Create an Account</h2>
+
+        <p>Join Tute Me today and unlock a world of personalized learning! Whether you're a student looking for academic support or a tutor ready to share your knowledge, our platform makes it easy to connect, learn, and grow.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('signup') }}" method="post">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="surname" name="surname" placeholder="Surname" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Create password" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+            </div>
+
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <hr>
+
+        <p class="aside">Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+    </article>
+</section>
+
+{% endblock %}
