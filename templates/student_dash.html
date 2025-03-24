@@ -1,26 +1,33 @@
-<!-- templates/student_dash.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Student Dashboard</title>
-</head>
-<body>
-    <h1>Student Dashboard</h1>
-    <h2>Available Modules</h2>
-    <p><a href="{{ url_for('search_modules') }}">Search Modules</a></p>
-    <ul>
-        {% for module in modules %}
-            <li>
-                {{ module.module_name }} ({{ module.module_code }}) - 
-                <a href="{{ url_for('book_session', module_id=module.module_id) }}">Book a Tutor</a>
-            </li>
-        {% endfor %}
-    </ul>
+{% extends 'base.html' %}
 
-    <p>Debug: Button should appear below this line.</p>
-    <a href="{{ url_for('view_bookings') }}" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; display: inline-block;">
-        View My Bookings
-    </a>
-</body>
-</html>
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard student-dashboard">
+    <div class="title">
+        <h1>Hi {{ session.username }}. Hope you are doing good today?</h1>
+        <p>
+            Here are the modules we offer. You can book a tutor based on the module you want.
+        </p>
+    </div>
+    <div class="content">
+        <h3>Your Booked Sessions</h3>
+        {% if booked_sessions %}
+            <ul>
+                {% for session in booked_sessions %}
+                    <li>
+                        <p>
+                            <strong>{{ session.module_name }}</strong> ({{ session.module_code }})<br>
+                            Tutor: {{ session.tutor_name }} {{ session.tutor_surname }}<br>
+                            Date: {{ session.booking_date }}<br>
+                            Time: {{ session.start_time }} - {{ session.end_time }} ({{ session.day_of_week }})
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no booked sessions.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

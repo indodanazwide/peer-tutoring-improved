@@ -130,8 +130,8 @@ def list_users():
 
 # Homepage
 @app.route('/')
-def index():
-    return redirect(url_for('login'))
+def home():
+    return render_template('home.html')
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])

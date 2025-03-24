@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Tute Me{% endblock %}
+
+{% block content %}
+
+<section class="hero" id="hero">
+    <article class="hero-title">
+        <h1>Tute Me!</h1>
+
+        <p>Establish connections with academic specialists, arrange educational consultations with ease, and accomplish your scholastic objectives with assurance.</p>
+
+        <p>Where academic excellence intersects with collaborative learning—commence your educational journey today!</p>
+    </article>
+
+    <article class="cards">
+        <div class="card">
+            <h3>Find a Tutor</h3>
+
+            <p>Establish connections with qualified peer academic specialists who can facilitate your progress toward achieving your educational objectives.</p>
+        
+            <a href="{{ url_for('login') }}" class="btn">
+                <span>Find a Tutor</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+        <div class="card">
+            <h3>Become a Tutor</h3>
+
+            <p>Disseminate your knowledge, assist fellow students in their academic pursuits, and receive compensation while enhancing your professional credentials.</p>
+        
+            <a href="{{ url_for('login') }}" class="btn">
+                <span>Become a Tutor</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </article>
+</section>
+
+<section class="about" id="about">
+    <article class="description">
+        <h2>Discover Tute Me: Your Portal to Enhanced Learning</h2>
+
+        <p>Tute Me is an educational platform that facilitates connections between students and peer academic specialists for personalized learning experiences. Our institutional mission is to enhance the accessibility and individualization of education through peer-to-peer knowledge transfer.</p>
+
+        <p>We are dedicated to empowering students through customized peer-to-peer educational interactions. Schedule academic consultations, monitor your educational progress, and establish connections with instructors who transform learning into a more comprehensible, intelligent, and effective process.</p>
+    
+        <a href="{{ url_for('login') }}" class="btn">
+            <span>Start Your Journey With Us</span>
+            <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+    </article>
+    <img src="../static/images/student.png" alt="Tute Me">
+</section>
+
+<section class="cards contact" id="contact">
+    <article class="card tuteme">
+        <h3>Company Information</h3>
+        <p><strong>TuteMe</strong></p>
+        <p>123 Learning Avenue, Durban, 4000, South Africa</p>
+        <p>Phone: +27 21 123 4567</p>
+        <p>Email: <a href="mailto:support@tuteme.co.za">support@tuteme.co.za</a></p>
+        <p>Website: <a href="https://www.tuteme.co.za" target="_blank">www.tuteme.co.za</a></p>
+    </article>
+
+    <article class="card support">
+        <h3>Support Hours</h3>
+        <p><strong>Monday - Friday:</strong> 08:00 AM - 06:00 PM (SAST)</p>
+        <p><strong>Saturday:</strong> 09:00 AM - 01:00 PM (SAST)</p>
+        <p><strong>Sunday & Public Holidays:</strong> Closed</p>
+    </article>
+
+    <article class="card follow">
+        <h3>Follow Us</h3>
+        <p><a href="https://facebook.com/TuteMeSA" target="_blank">Facebook</a></p>
+        <p><a href="https://twitter.com/TuteMeSA" target="_blank">Twitter</a></p>
+        <p><a href="https://instagram.com/TuteMeSA" target="_blank">Instagram</a></p>
+        <p><a href="https://linkedin.com/company/tuteme" target="_blank">LinkedIn</a></p>
+    </article>
+</section>
+
+<section id="services">
+    <img src="../static/images/cta.webp" alt="Services" width="300">
+    <aside class="cta">
+        <h2>Join Our Academic Community Today</h2>
+        <p>
+            Whether you are a student seeking academic enhancement or an instructor eager to impart your knowledge, the Tute Me Platform is designed to assist you in achieving your educational objectives. Initiate your academic journey today and experience the advantages of peer-facilitated learning!
+        </p>
+    
+        <a href="{{ url_for('login') }}" class="btn">
+            <span>Join Us</span>
+            <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+    </aside>
+</section>
+
+<section class="cards info">
+    <article class="card">
+        <h3>Participant Roles</h3>
+
+        <p>
+            Students identify suitable instructors and reserve educational sessions, instructors manage their academic schedules and provide instruction, while administrators ensure the optimal functioning of all system components.
+        </p>
+    </article>
+    <article class="card">
+        <h3>Efficient Scheduling</h3>
+
+        <p>
+            Students reserve educational sessions based on instructor availability, instructors confirm or decline requests, and automated notification systems prevent missed appointments.
+        </p>
+    </article>
+    <article class="card">
+        <h3>Distinguished Instructors</h3>
+
+        <p>
+            Instructors undergo verification for subject matter expertise, students provide evaluative feedback for transparency, and administrators maintain high standards of educational quality.
+        </p>
+    </article>
+</section>
+
+{% endblock %}

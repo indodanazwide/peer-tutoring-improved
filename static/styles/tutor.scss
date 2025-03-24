@@ -1,0 +1,34 @@
+@use 'index' as *;
+
+.tutor-bookings {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-block: 6rem;
+    }
+
+    .content {
+        .header,
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            gap: 1rem;
+        }
+    }
+}

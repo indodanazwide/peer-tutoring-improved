@@ -4,8 +4,13 @@
 {% block title %}Your Bookings{% endblock %}
 
 {% block content %}
-    <h1>Your Bookings</h1>
-    <table>
+<div class="tutor-bookings">
+    <div class="title">
+        <h1>Your Bookings</h1>
+    </div>
+
+    <div class="content">
+        <table>
         <thead>
             <tr>
                 <th>Student</th>
@@ -34,6 +39,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <br>
-    <a href="{{ url_for('tutor_dashboard') }}">Back to Dashboard</a>
+</div>
 {% endblock %}
