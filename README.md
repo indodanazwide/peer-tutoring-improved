@@ -1,69 +1,78 @@
 # Peer Tutoring Platform
 
-## Overview
-The **Peer Tutoring Platform** is a web-based application designed to facilitate academic support through a structured peer tutoring system. The platform connects students with tutors, allowing them to schedule sessions, communicate effectively, and track progress.
+A comprehensive web-based application that connects students with peer tutors, facilitating academic support and knowledge sharing within educational institutions.
+
+---
+
+## Table of Contents
+
+- Features
+- Technology Stack
+- Project Structure
+- Installation
+- Configuration
+- Usage
+- API Documentation
+- Database Schema
+- Contributing
+- License
+
+---
 
 ## Features
-- **User Roles**
-  - **Students**: Search for tutors, book sessions, and provide feedback.
-  - **Tutors**: Manage schedules, accept bookings, and conduct tutoring sessions.
-  - **Admins**: Oversee platform activities, manage users, and ensure quality control.
 
-- **Booking & Scheduling System**
-  - View tutor availability and book sessions.
-  - Tutors can accept/reject bookings.
-  - Automated email/SMS reminders for upcoming sessions.
+### Core Features
 
-- **Communication System**
-  - Real-time chat between students and tutors.
-  - Notifications for booking confirmations and feedback requests.
+- **Authentication System** - Secure registration, login with JWT tokens
+- **Multi-Role System** - Students, Tutors, and Admin roles with different permissions
+- **Module Management** - Comprehensive module catalog with detailed information
+- **Smart Scheduling** - Intelligent tutor-student matching based on availability
+- **Real-time Scheduling** - Built-in chat system for seamless interaction
 
-- **Tutor Verification & Quality Control**
-  - Tutors require academic proof or qualification tests.
-  - Student rating and review system.
-  - Admin oversight for performance monitoring.
+### Advanced Features
+
+- **Review & Rating Systems** - Peer feedback mechanism for quality assurance
+- **Notification System** - Real-time alerts for bookings, messages, and updates
+- **Analytics Dashboard** - Performance metrics and usage statistics
+- **Smart Matching Algorithm** - AI-powered tutor recommendations
+- **Responsive Design** - Mobile-first, cross-platform compatibility
+- **File Sharing** - Document and resource sharing capabilities
+- **Advanced Search & Filtering** - Find tutors by modules, rating, availability
+
+### Use Experience
+
+- **Rich User Profiles** - Detailed bios, qualifications, and portfolio showcase
+- **Progress Tracking** - Monitor learning journey and session history
+- **Modern UI/UX** - Clean, intuitive interface with dark/light mode support
+- **Performance Optimized** - Fast loading times and smooth interactions
 
 ## Technology Stack
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Backend**: Python (Flask)
-- **Database**: SQLite
-- **Authentication**: JWT/OAuth for secure login
 
-## Installation & Setup
-1. Clone the repository:
-   ```sh
-   git clone git@github.com:levs2424/PBDV-PROJECT.git
-   cd PBDV-PROJECT
-   ```
-<!--
-2. Set up a virtual environment and install dependencies:
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-3. Run the development server:
-   ```sh
-   flask run
-   ```
-4. Access the platform at `http://127.0.0.1:5000/`.-->
+### Backend
 
-## Project Timeline
-| Phase | Duration | Tasks |
-|--------|------------|---------------------|
-| **1. Research & Planning** | 2 weeks | Define requirements, finalize wireframes, set up GitHub repo |
-| **2. Backend Development** | 4 weeks | Build user authentication, database schema, and API endpoints |
-| **3. Frontend Development** | 4 weeks | Develop UI components, integrate APIs, design responsiveness |
-| **4. Testing & Refinement** | 3 weeks | Conduct user testing, bug fixes, performance optimizations |
+- **Framework**: Flask
+- **Database**: PostgreSQL with SQLAlchemy ORM
+- **Authentication**: JWT (JSON Web Tokens)
+- **API**: RESTful architecture with Flask-RESTful
+- **Real-time**: Socket.IO for live features
+- **File Storage**: Local storage with cloud migration ready
+- **Testing**: pytest, unittest
 
-## Contribution Guidelines
-- Fork the repository and create a feature branch.
-- Follow the coding style and best practices.
-- Submit a pull request with detailed descriptions.
+### Frontend
 
-## License
-This project is licensed under the MIT License.
+- **Framework**: React with Hooks
+- **Styling**: Tailwind CSS
+- **State Management**: Redux Toolkit / Context API
+- **HTTP Client**: Axios
+- **Real-time**: Socket.IO Client
+- **Build Tool**: Vite
+- **UI Components**: Custom component library
 
-## Contact
-For queries or contributions, please reach out to the **MegaBytes Group**.
+### DevOps
 
+- **Containerization**: Docker & Docker Compose
+- **Process Manager**: Gunicorn
+- **Database Migrations**: Flask-Migrate
+- **Environment Management**: python-dotenv
+- **Code Quality: Black**, Flake8, ESLint, Prettier
+- **Version Control**: Git with conventional commits
